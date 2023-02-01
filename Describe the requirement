@@ -17,7 +17,7 @@ https://api.themoviedb.org
 Notes:
 ● You are required to register an account to generate API Key.
 ● You can apply for an API key by clicking the "API" link from the left hand sidebar within your account settings
-page. You need to have a legitimate business name, address, phone number and description to apply for an
-API key. https://www.themoviedb.org/faq/api
+  page. You need to have a legitimate business name, address, phone number and description to apply for an
+  API key. https://www.themoviedb.org/faq/api
 ● Be aware of the API limit which is 40 Requests per 10 seconds.
 ● API documentation is found here: https://developers.themoviedb.org/3/people/get-person-movie-credits.
