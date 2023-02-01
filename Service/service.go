@@ -3,7 +3,7 @@
 
 // Function for Latest Movies:
 func (s *MovieService) LatestMovies(ctx context.Context, req *LatestMoviesRequest) (*LatestMoviesResponse, error) {
-	// Retrieve the latest movies from the database or TheMovieDB APIs
+	// Retrieve the latest movies from the TheMovieDB APIs
 	movies, err := getLatestMovies()
 	if err != nil {
 		return nil, err
@@ -17,7 +17,7 @@ func (s *MovieService) LatestMovies(ctx context.Context, req *LatestMoviesReques
 }
 // Function for Search Movies:
 func (s *MovieService) SearchMovies(ctx context.Context, req *SearchMoviesRequest) (*SearchMoviesResponse, error) {
-	// Search the movies in the database or TheMovieDB APIs
+	// Search the movies in the TheMovieDB APIs
 	movies, err := searchMovies(req.Query)
 	if err != nil {
 		return nil, err
@@ -54,7 +54,7 @@ func (s *MovieService) AddRemoveMovieFromFavorites(ctx context.Context, req *Add
 
 // Function for Movie Details:
 func (s *MovieService) MovieDetails(ctx context.Context, req *MovieDetailsRequest) (*MovieDetailsResponse, error) {
-	// Retrieve the movie details from the database or TheMovieDB APIs
+	// Retrieve the movie details from the TheMovieDB APIs
 	movie, err := getMovieDetails(req.MovieID)
 	if err != nil {
 		return nil, err
