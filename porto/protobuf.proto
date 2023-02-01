@@ -1,3 +1,10 @@
+//****************************************************************
+
+// In this file I will define the protobuf messages and services for the GRPC service,
+// and I will start with defining following messages:
+
+//****************************************************************
+
 
 // This message will contain the movie information such as name, poster, description, and genres.
 message Movie {
@@ -40,7 +47,7 @@ message Movie {
 
   //****************************************************************
 
-  // NOW we will define the gRPC service with the following methods:
+  // NOW we will define the gRPC service with following methods:
   
   //****************************************************************
 
