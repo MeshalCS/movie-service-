@@ -7,9 +7,9 @@ message Movie {
 	repeated string genres = 4;
   }
   
-  // This message will contain the search query made by the user.
+  // This message will contain the search
   message SearchRequest {
-	string query = 1;
+	string movieName = 1;
   }
   
   // This message will contain the search results,so it will return a list of Movie objects.
@@ -22,17 +22,17 @@ message Movie {
 	Movie movie = 1;
   }
 
-  // This message will contain a Confirm that the movie has been added to the user favorites.
+  // This message will contain a Confirm that the movie has been added to the user favorites
   message AddToFavoritesResponse {
 	string message = 1;
   }
   
-  // This message will contain the Movie object that the user wants to remove from their favorites.
+  // This message will contain the Movie object that the user wants to remove from their favorites
   message RemoveFromFavoritesRequest {
 	Movie movie = 1;
   }
   
-  // This message will contain a Confirm that the movie has been removed from the user favorites.
+  // This message will contain a Confirm that the movie has been removed from the user favorites
   message RemoveFromFavoritesResponse {
 	string message = 1;
   }
@@ -62,7 +62,7 @@ message Movie {
   }
   
   // This method would accept a RemoveFromFavoritesRequest object and return a confirmation
-  // that the movie has been removed from the user's favorites.
+  // that the movie has been removed from the user's favorites
   service MovieService {
 	rpc RemoveFromFavorites(RemoveFromFavoritesRequest) returns (RemoveFromFavoritesResponse) {}
   }
