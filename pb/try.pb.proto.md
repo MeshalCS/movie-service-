@@ -9,8 +9,8 @@ protoc --go_out="output_directory" protobuf.proto
 
 so I will not stop , I will Trying more
 
-now I install Homebrew by the official Homebrew website: https://brew.sh/ in my terminal to install the protobuf compiler:
-AND I run this command:    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-After that I run this command:    brew install protobuf
+now I install Homebrew by the official Homebrew website: https://brew.sh/ in my terminal to install the protobuf compiler:<br />
+AND I run this command:    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"<br />
+After that I run this command:    brew install protobuf<br />
 
 but I found a missing mistake on my environment, I’m trying to fixe it.
