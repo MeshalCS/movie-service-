@@ -10,6 +10,10 @@ import (
 	pb "movie_service/porto/protobuf.proto"
 )
 
+const (
+	port = ":50051"
+)
+
 type movieServer struct{
 
 }
