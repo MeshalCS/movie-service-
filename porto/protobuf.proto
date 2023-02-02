@@ -4,74 +4,106 @@
 // and I will start with defining following messages:
 
 //****************************************************************
-
+syntax = "proto3";
 
 // This message will contain the movie information such as name, poster, description, and genres.
-message Movie {
-	string name = 1;
-	string poster = 2;
-	string description = 3;
-	repeated string genres = 4;
+
+  message Movie {
+    int32 id = 1;
+    string name = 2;
+    string poster_path = 3;
+    string description = 4;
+    repeated string genres = 5;
   }
   
-  // This message will contain the search
-  message SearchRequest {
-	string movieName = 1;
+  // This message will contain the Latest Movies made by the user.
+  message LatestMoviesRequest {
+    int32 page = 1;
+  }
+  
+  // This message will contain the Latest Movies results,so it will return a list of Movie object.
+  message LatestMoviesResponse {
+    repeated Movie movies = 1;
+  }
+  // This message will contain the search query made by the user.
+  message SearchMoviesRequest {
+    string query = 1;
+    int32 page = 2;
   }
   
   // This message will contain the search results,so it will return a list of Movie objects.
-  message SearchResponse {
-	repeated Movie movies = 1;
+  message SearchMoviesResponse {
+    repeated Movie movies = 1;
   }
+  
   
   // This message will contain the Movie object that the user wants to add to their favorites.
-  message AddToFavoritesRequest {
-	Movie movie = 1;
+  message AddMovieToFavoritesRequest {
+    int32 movie_id = 1;
   }
 
-  // This message will contain a Confirm that the movie has been added to the user favorites
-  message AddToFavoritesResponse {
-	string message = 1;
+  // This message will contain a Confirm that the movie has been added to the user favorites.
+  message AddMovieToFavoritesResponse {
+    bool success = 1;
   }
   
-  // This message will contain the Movie object that the user wants to remove from their favorites
-  message RemoveFromFavoritesRequest {
-	Movie movie = 1;
+  // This message will contain the Movie object that the user wants to remove from their favorites.
+  message RemoveMovieFromFavoritesRequest {
+    int32 movie_id = 1;
   }
   
-  // This message will contain a Confirm that the movie has been removed from the user favorites
-  message RemoveFromFavoritesResponse {
-	string message = 1;
+  // This message will contain a Confirm that the movie has been removed from the user favorites.
+  message RemoveMovieFromFavoritesResponse {
+    bool success = 1;
+  }
+  
+  // This message will contain a Movie Details.
+  message GetMovieDetailsRequest {
+    int32 movie_id = 1;
+  }
+  
+  // This message will contain the Movie Details ,so it will return a list of Movie object.
+  message GetMovieDetailsResponse {
+    Movie movie = 1;
   }
   
 
   //****************************************************************
 
-  // NOW we will define the gRPC service with following methods:
-  
+  // NOW we will define the gRPC service with the following methods:
+
   //****************************************************************
+  
+  
 
 
   // This method will return the latest movies.
   service MovieService {
-	rpc GetLatestMovies(Empty) returns (SearchResponse) {}
+	rpc GetLatestMovies(LatestMoviesRequest) returns (LatestMoviesResponse) {}
   }
   
   // This method will accept a SearchRequest object and return the search results.
   service MovieService {
-	rpc SearchMovies(SearchRequest) returns (SearchResponse) {}
+  rpc SearchMovies(SearchMoviesRequest) returns (SearchMoviesResponse) {}
   }
   
   // This method will accept an AddToFavoritesRequest object and return a confirmation
   // that the movie has been added to the user favorites.
   service MovieService {
-	rpc AddToFavorites(AddToFavoritesRequest) returns (AddToFavoritesResponse) {}
+  rpc AddMovieToFavorites(AddMovieToFavoritesRequest) returns (AddMovieToFavoritesResponse) {}
   }
   
   // This method would accept a RemoveFromFavoritesRequest object and return a confirmation
-  // that the movie has been removed from the user's favorites
+  // that the movie has been removed from the user's favorites.
   service MovieService {
-	rpc RemoveFromFavorites(RemoveFromFavoritesRequest) returns (RemoveFromFavoritesResponse) {}
+  rpc RemoveMovieFromFavorites(RemoveMovieFromFavoritesRequest) returns (RemoveMovieFromFavoritesResponse) {}
   }
   
+  // This method will return the Details of movie.
+  service MovieService {
+      rpc GetMovieDetails(GetMovieDetailsRequest) returns (GetMovieDetailsResponse) {}
+  }
+  
+  
+
   
