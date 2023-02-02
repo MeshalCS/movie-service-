@@ -18,7 +18,14 @@ func main() {
 
 	// Connect to the gRPC service
 	conn, err := grpc.Dial(address, grpc.WithInsecure())
-	
+	if err != nil {
+		log.Fatalf("Failed to connect to gRPC service: %v", err)
+	}
+	defer conn.Close()
 
+	// Create a client using the connection
+	client := pb.NewMovieServiceClient(conn)
+
+}
 // ********************************************************	
 // Alert: This code is in progress to implement requirements 
