@@ -6,7 +6,9 @@ you will try download the environment you will need it, to make simple command t
 like this command:
 protoc --go_out="output_directory" protobuf.proto
 
+
 so I will not stop , I will Trying more
+
 now I install Homebrew by the official Homebrew website: https://brew.sh/
 AND I run this command <brew install protobuf>
 in your terminal to install the protobuf compiler:
