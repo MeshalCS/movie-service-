@@ -17,7 +17,7 @@ type movieServer struct{
 
 // Function for Latest Movies:
 func (s *MovieService) LatestMovies(ctx context.Context, req *LatestMoviesRequest) (*LatestMoviesResponse, error) {
-	// I will retrieve the latest movies from the TheMovieDB APIs
+	// I will retrieve the latest movies from the The Movie DB API, when I finish the implementation code
 	movies, err := getLatestMovies()
 	if err != nil {
 		return nil, err
@@ -68,7 +68,7 @@ func (s *MovieService) AddRemoveMovieFromFavorites(ctx context.Context, req *Add
 
 // Function for Movie Details:
 func (s *MovieService) MovieDetails(ctx context.Context, req *MovieDetailsRequest) (*MovieDetailsResponse, error) {
-	// I will retrieve the latest movies from the TheMovieDB APIs
+	// I will retrieve the latest movies from the The Movie DB API, when I finish the implementation code
 	movie, err := getMovieDetails(req.MovieID)
 	if err != nil {
 		return nil, err
