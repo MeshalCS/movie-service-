@@ -4,10 +4,11 @@
 // and I will start with defining following messages:
 
 //****************************************************************
+
+
 syntax = "proto3";
 
 // This message will contain the movie information such as name, poster, description, and genres.
-
   message Movie {
     int32 id = 1;
     string name = 2;
@@ -74,36 +75,22 @@ syntax = "proto3";
 
   //****************************************************************
   
+
   
-
-
-  // This method will return the latest movies.
   service MovieService {
+        // This will return the latest movies.
 	rpc GetLatestMovies(LatestMoviesRequest) returns (LatestMoviesResponse) {}
+	// This will accept a SearchRequest object and return the search results.
+	rpc SearchMovies(SearchMoviesRequest) returns (SearchMoviesResponse) {}
+	 // This will accept an AddToFavoritesRequest object and return a confirmation
+         // that the movie has been added to the user favorites.
+	rpc AddMovieToFavorites(AddMovieToFavoritesRequest) returns (AddMovieToFavoritesResponse) {}
+	 // This will accept a RemoveFromFavoritesRequest object and return a confirmation
+         // that the movie has been removed from the user's favorites.
+	rpc RemoveMovieFromFavorites(RemoveMovieFromFavoritesRequest) returns (RemoveMovieFromFavoritesResponse) {}
+         // This method will return the Details of movie.
+	rpc GetMovieDetails(GetMovieDetailsRequest) returns (GetMovieDetailsResponse) {}
   }
-  
-  // This method will accept a SearchRequest object and return the search results.
-  service MovieService {
-  rpc SearchMovies(SearchMoviesRequest) returns (SearchMoviesResponse) {}
-  }
-  
-  // This method will accept an AddToFavoritesRequest object and return a confirmation
-  // that the movie has been added to the user favorites.
-  service MovieService {
-  rpc AddMovieToFavorites(AddMovieToFavoritesRequest) returns (AddMovieToFavoritesResponse) {}
-  }
-  
-  // This method would accept a RemoveFromFavoritesRequest object and return a confirmation
-  // that the movie has been removed from the user's favorites.
-  service MovieService {
-  rpc RemoveMovieFromFavorites(RemoveMovieFromFavoritesRequest) returns (RemoveMovieFromFavoritesResponse) {}
-  }
-  
-  // This method will return the Details of movie.
-  service MovieService {
-      rpc GetMovieDetails(GetMovieDetailsRequest) returns (GetMovieDetailsResponse) {}
-  }
-  
   
 
   
