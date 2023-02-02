@@ -1,4 +1,4 @@
-hello here I’m trying to Generate the Go code from the proto file.<br />
+hello here I’m trying to Generate the Go code from my proto file.<br />
 first of all, I know this is a simple way because I will not write any code!<br />
 because we all know it will generate it automatically.<br />
 but the big challenge when you do it for a first time.<br />
