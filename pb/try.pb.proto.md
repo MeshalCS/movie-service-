@@ -3,7 +3,8 @@ first of all, I know this is a simple way because I will not write any code!
 because we all know it will generate it automatically.
 but the big challenge when you do it for a first time.
 you will try download the environment you will need it, to make simple command to generate it
-like this:
+like this command:
+
 protoc --go_out="output_directory" protobuf.proto
 
 so I will not stop , I will Trying more
