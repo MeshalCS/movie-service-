@@ -1,9 +1,23 @@
+package main
 
+import (
+	"context"
+	"log"
+	"net"
+
+	"google.golang.org/grpc"
+
+	pb "movie_service/porto/protobuf.proto"
+)
+
+type movieServer struct{
+
+}
 
 
 // Function for Latest Movies:
 func (s *MovieService) LatestMovies(ctx context.Context, req *LatestMoviesRequest) (*LatestMoviesResponse, error) {
-	// Retrieve the latest movies from the TheMovieDB APIs
+	// I will retrieve the latest movies from the TheMovieDB APIs
 	movies, err := getLatestMovies()
 	if err != nil {
 		return nil, err
@@ -54,7 +68,7 @@ func (s *MovieService) AddRemoveMovieFromFavorites(ctx context.Context, req *Add
 
 // Function for Movie Details:
 func (s *MovieService) MovieDetails(ctx context.Context, req *MovieDetailsRequest) (*MovieDetailsResponse, error) {
-	// Retrieve the movie details from the TheMovieDB APIs
+	// I will retrieve the latest movies from the TheMovieDB APIs
 	movie, err := getMovieDetails(req.MovieID)
 	if err != nil {
 		return nil, err
