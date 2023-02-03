@@ -7,7 +7,7 @@ import (
 
 	"google.golang.org/grpc"
 
-	pb "movie_service/porto/protobuf.proto"
+	//pb "movie_service/porto/protobuf.proto"
 )
 
 const (
