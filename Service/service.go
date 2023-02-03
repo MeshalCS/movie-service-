@@ -49,9 +49,9 @@ func (s *MovieService) SearchMovies(ctx context.Context, in *pb.SearchMoviesRequ
 		res.Movie = append(res.Movie, &pb.Movie{
 			Id:          int32(movie.ID),
 			Title:       movie.Title,
-			PosterPath:  movie.PosterPath,
-			Overview:    movie.Overview,
-			Genres:      movie.Genres,
+			PosterPath:  movie.poster_path,
+			description: movie.description,
+			Genres:      movie.genres,
 		})
 	}
 
