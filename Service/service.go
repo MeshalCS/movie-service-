@@ -15,7 +15,9 @@ const (
 )
 
 type movieServer struct{
-
+	pb.UnimplementedMovieServiceServer
+	db     *database.DB
+	// client *api.Client
 }
 
 
