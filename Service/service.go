@@ -34,19 +34,30 @@ func (s *MovieService) LatestMovies(ctx context.Context, req *LatestMoviesReques
 	return resp, nil
 }
 // Function for Search Movies:
-func (s *MovieService) SearchMovies(ctx context.Context, req *SearchMoviesRequest) (*SearchMoviesResponse, error) {
-	// Search the movies in the TheMovieDB APIs
-	movies, err := searchMovies(req.Query)
+
+func (s *MovieService) SearchMovies(ctx context.Context, in *pb.SearchMoviesRequest) (*pb.SearchMoviesResponse, error) {
+	movies, err := s.client.SearchMovies(in.Query, in.Page)
 	if err != nil {
-		return nil, err
+		return nil, status.Errorf(codes.Internal, "Failed to search for movies: %v", err)
 	}
 
-	// Build and return the response
-	resp := &SearchMoviesResponse{
-		Movies: movies,
+	res := &pb.SearchMoviesResponse{}
+	for _, movie := range movies {
+		res.Movie = append(res.Movie, &pb.Movie{
+			Id:          int32(movie.ID),
+			Title:       movie.Title,
+			PosterPath:  movie.PosterPath,
+			Overview:    movie.Overview,
+			Genres:      movie.Genres,
+		})
 	}
-	return resp, nil
+
+	return res, nil
 }
+
+
+
+
 
 // Function Add/Remove Movie from Favorites:
 func (s *MovieService) AddRemoveMovieFromFavorites(ctx context.Context, req *AddRemoveMovieFromFavoritesRequest) (*AddRemoveMovieFromFavoritesResponse, error) {
