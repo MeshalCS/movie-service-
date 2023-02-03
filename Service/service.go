@@ -59,27 +59,19 @@ func (s *MovieService) SearchMovies(ctx context.Context, in *pb.SearchMoviesRequ
 
 
 
-// Function Add/Remove Movie from Favorites:
-func (s *MovieService) AddRemoveMovieFromFavorites(ctx context.Context, req *AddRemoveMovieFromFavoritesRequest) (*AddRemoveMovieFromFavoritesResponse, error) {
-	var err error
-	var success bool
-
-	// Add or remove the movie from the user's favorite list in the database
-	if req.IsAdd {
-		success, err = addMovieToFavorites(req.UserID, req.MovieID)
-	} else {
-		success, err = removeMovieFromFavorites(req.UserID, req.MovieID)
-	}
+// Function Add Movie from Favorites:
+func (s *server) AddMovieToFavorites(ctx context.Context, in *pb.AddMovieToFavoritesRequest) (*pb.AddMovieToFavoritesResponse, error) {
+	err := s.db.AddMovieToFavorites(in.MovieId)
 	if err != nil {
-		return nil, err
+		return nil, status.Errorf(codes.Internal, "Failed to add movie to favorites: %v", err)
 	}
 
-	// Build and return the response
-	resp := &AddRemoveMovieFromFavoritesResponse{
-		Success: success,
-	}
-	return resp, nil
+	return &pb.AddMovieToFavoritesResponse{Success: true}, nil
 }
+
+
+// Function Remove Movie from Favorites:
+
 
 // Function for Movie Details:
 func (s *MovieService) MovieDetails(ctx context.Context, req *MovieDetailsRequest) (*MovieDetailsResponse, error) {
