@@ -71,7 +71,14 @@ func (s *server) AddMovieToFavorites(ctx context.Context, in *pb.AddMovieToFavor
 
 
 // Function Remove Movie from Favorites:
+func (s *server) RemoveMovieFromFavorites(ctx context.Context, in *pb.RemoveMovieFromFavoritesRequest) (*pb.RemoveMovieFromFavoritesResponse, error) {
+	err := s.db.RemoveMovieFromFavorites(in.MovieId)
+	if err != nil {
+		return nil, status.Errorf(codes.Internal, "Failed to remove movie from favorites: %v", err)
+	}
 
+	return &pb.RemoveMovieFromFavoritesResponse{Success: true}, nil
+}
 
 // Function for Movie Details:
 func (s *MovieService) MovieDetails(ctx context.Context, req *MovieDetailsRequest) (*MovieDetailsResponse, error) {
