@@ -28,6 +28,7 @@ func (s *MovieService) LatestMovies(ctx context.Context, req *LatestMoviesReques
 	}
 
 	// Build and return the response
+	//in progress to implement
 	resp := &LatestMoviesResponse{
 		Movies: movies,
 	}
@@ -54,7 +55,6 @@ func (s *MovieService) SearchMovies(ctx context.Context, in *pb.SearchMoviesRequ
 
 	return res, nil
 }
-
 
 
 
@@ -89,6 +89,7 @@ func (s *MovieService) MovieDetails(ctx context.Context, req *MovieDetailsReques
 	}
 
 	// Build and return the response
+	//in progress to implement
 	resp := &MovieDetailsResponse{
 		Movie: movie,
 	}
