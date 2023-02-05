@@ -11,7 +11,7 @@ syntax = "proto3";
 // This message will contain the movie information such as name, poster, description, and genres.
   message Movie {
     int32 id = 1;
-    string name = 2;
+    string Title = 2;
     string poster_path = 3;
     string description = 4;
     repeated string genres = 5;
