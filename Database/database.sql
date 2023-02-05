@@ -1,7 +1,7 @@
 CREATE TABLE movies (
 	id INTEGER PRIMARY KEY,
-	name TEXT NOT NULL,
-	poster_url TEXT NOT NULL,
+	Title TEXT NOT NULL,
+	poster_path TEXT NOT NULL,
 	description TEXT NOT NULL,
 	genres TEXT NOT NULL
 );
