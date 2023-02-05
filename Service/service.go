@@ -22,22 +22,27 @@ type movieServer struct{
 
 
 // Function for Latest Movies:
-func (s *MovieService) LatestMovies(ctx context.Context, req *LatestMoviesRequest) (*LatestMoviesResponse, error) {
-	// I will retrieve the latest movies from the The Movie DB API, when I finish the implementation code
-	movies, err := getLatestMovies()
+func (s *MovieService) LatestMovies(ctx context.Context, in *pb.LatestMoviesRequest) (*pb.LatestMoviesResponse, error) {
+	movies, err := s.client.GetLatestMovies(in.Page)
 	if err != nil {
-		return nil, err
+		return nil, status.Errorf(codes.Internal, "Failed to get latest movies: %v", err)
 	}
 
-	// Build and return the response
-	//in progress to implement
-	resp := &LatestMoviesResponse{
-		Movies: movies,
+	res := &pb.LatestMoviesResponse{}
+	for _, movie := range movies {
+		res.Movie = append(res.Movie, &pb.Movie{
+			id:          int32(movie.id),
+			Title:       movie.Title,
+			poster_path:  movie.poster_path,
+			description:    movie.description,
+			genres:      movie.genres,
+		})
 	}
-	return resp, nil
+
+	return res, nil
 }
-// Function for Search Movies:
 
+// Function for Search Movies:
 func (s *MovieService) SearchMovies(ctx context.Context, in *pb.SearchMoviesRequest) (*pb.SearchMoviesResponse, error) {
 	movies, err := s.client.SearchMovies(in.Query, in.Page)
 	if err != nil {
@@ -47,11 +52,11 @@ func (s *MovieService) SearchMovies(ctx context.Context, in *pb.SearchMoviesRequ
 	res := &pb.SearchMoviesResponse{}
 	for _, movie := range movies {
 		res.Movie = append(res.Movie, &pb.Movie{
-			Id:          int32(movie.ID),
+			id:          int32(movie.id),
 			Title:       movie.Title,
-			PosterPath:  movie.poster_path,
+			poster_path:  movie.poster_path,
 			description: movie.description,
-			Genres:      movie.genres,
+			genres:      movie.genres,
 		})
 	}
 
