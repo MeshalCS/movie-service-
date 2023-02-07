@@ -1,6 +1,3 @@
-// Alert: This code is in progress to implement requirements 
-// ********************************************************	
-
 package main
 
 import (
@@ -39,6 +36,23 @@ func GetLatestMovies(client pb.MovieServiceClient) string {
 		fmt.Println("-", movie.Name)
 	}
 }
+
+//fun SearchMovies for the user want to Search the movies
+func SearchMovies(client pb.MovieServiceClient) string {
+	// Call the SearchMovies method
+	searchMoviesResponse, err := client.SearchMovies(context.Background(), &pb.SearchMoviesRequest{
+		Query: "Matrix",
+	})
+	if err != nil {
+		log.Fatalf("Failed to search movies: %v", err)
+	}
+	fmt.Println("\nSearch Results:")
+	for _, movie := range searchMoviesResponse.Movies {
+		fmt.Println("-", movie.Name)
+	}
+
+}
+
 
 
 
